@@ -52,7 +52,7 @@ class GisJsonObj
 
 end
 
-class Tracker
+class Track
 
   TYPE = "Feature"
   GEO_TYPE = "MultiLineString"
@@ -114,7 +114,7 @@ class Waypoint
   GEO_TYPE = "Point"
 
   def initialize(lon, lat, ele=nil, name=nil, type=nil)
-    @point = Point.new(lon, lat, ele)
+    @point = Point.new(lon, lat, ele) # Dependency... should this be passed in instead?
     @name = name
     @type = type
   end
@@ -195,8 +195,8 @@ def main()
     Point.new(-122, 45.5),
   ]
 
-  t = Tracker.new([ts1, ts2], "track 1")
-  t2 = Tracker.new([ts3], "track 2")
+  t = Track.new([ts1, ts2], "track 1")
+  t2 = Track.new([ts3], "track 2")
 
   world = World.new("My Data", [w, w2, t, t2])
 
