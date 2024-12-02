@@ -4,6 +4,15 @@ require "json"
 
 class GisJson
 
+  def self.properties(title: nil, icon: nil)
+    properties = {
+      title: title,
+      icon: icon
+    }
+    properties.compact!
+
+    return properties
+  end
 
 end
 
