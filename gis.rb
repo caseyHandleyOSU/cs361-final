@@ -48,6 +48,7 @@ class Tracker
       coordinates.append(seg_points)
     }
 
+    # Redundancy detected?
     json_hash = { 
       type: "Feature", 
       properties: GisJson.properties(title: @name),
@@ -76,10 +77,6 @@ class Point
     end
 
     return arr
-  end
-
-  def to_s
-    return "#{@lat},#{@lon}#{@ele != nil ? ",#{@ele}" : ""}"
   end
 
 end
