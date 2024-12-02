@@ -30,7 +30,32 @@ class GisJson
 
 end
 
+class GisJsonObj
+
+  def initialize(type: nil, properties: nil, geometry: nil, features: nil)
+    @hash = {
+      type: type,
+      properties: properties,
+      geometry: geometry,
+      features: features
+    }
+    @hash.compact!
+  end
+
+  def get_hash()
+    return @hash
+  end
+
+  def to_json()
+    return JSON.generate(@hash)
+  end
+
+end
+
 class Tracker
+
+  TYPE = "Feature"
+  GEO_TYPE = "MultiLineString"
 
   def initialize(segments, name=nil)
     @name = name
@@ -48,14 +73,12 @@ class Tracker
       coordinates.append(seg_points)
     }
 
-    # Redundancy detected?
-    json_hash = { 
-      type: "Feature", 
+    data = GisJsonObj.new(
+      type: TYPE,
       properties: GisJson.properties(title: @name),
-      geometry: GisJson.geometry(type: "MultiLineString", coordinates: coordinates)
-    }
-
-    return json_hash
+      geometry: GisJson.geometry(type: GEO_TYPE, coordinates: coordinates)
+    )
+    return data.get_hash()
   end
 
   def get_json()
@@ -87,6 +110,9 @@ end
 class Waypoint
   attr_reader :name, :type
 
+  TYPE = "Feature"
+  GEO_TYPE = "Point"
+
   def initialize(lon, lat, ele=nil, name=nil, type=nil)
     @point = Point.new(lon, lat, ele)
     @name = name
@@ -106,13 +132,12 @@ class Waypoint
   end
 
   def get_hash()
-    json_hash = {
-      type: "Feature",
-      geometry: GisJson.geometry(type: "Point", coordinates: @point.to_arr),
-      properties: GisJson.properties(title: @name, icon: @type)
-    }
-
-    return json_hash
+    data = GisJsonObj.new(
+      type: TYPE,
+      properties: GisJson.properties(title: @name, icon: @type),
+      geometry: GisJson.geometry(type: GEO_TYPE, coordinates: @point.to_arr)
+    )
+    return data.get_hash()
   end
 
   def get_json(indent=0)
@@ -121,6 +146,8 @@ class Waypoint
 end
 
 class World
+
+  TYPE = "FeatureCollection"
 
   def initialize(name, features)
     @name = name
@@ -137,12 +164,12 @@ class World
       features.append(feature.get_hash)
     }
 
-    json_hash = {
-      type: "FeatureCollection",
+    data = GisJsonObj.new(
+      type: TYPE,
       features: features
-    }
+    )
 
-    return json_hash
+    return data.get_hash()
   end
 
   def get_json(indent=0)

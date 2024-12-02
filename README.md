@@ -14,6 +14,7 @@
 - All Json getters now use the same interface (function name `get_json()`)
 - Abstracted all `get_json` functionality to `get_hash()`
 - Cleaned up `World`'s `get_json()`
+- Created `GisJsonObj` class to abstract creation of json hashes
 
 ## GIS Tool
 
