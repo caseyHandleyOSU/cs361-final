@@ -37,7 +37,7 @@ class Tracker
     @segments = segments
   end
 
-  def get_track_json()
+  def get_json()
     coordinates = []
     @segments.each{ |segment| 
       seg_points = []
@@ -102,7 +102,7 @@ class Waypoint
     return @point.ele
   end
 
-  def get_waypoint_json(indent=0)
+  def get_json(indent=0)
 
     json_hash = {
       type: "Feature",
@@ -125,7 +125,7 @@ class World
     @features.append(new_feature)
   end
 
-  def to_geojson(indent=0)
+  def get_json(indent=0)
     # Write stuff
     s = '{"type": "FeatureCollection","features": ['
     @features.each_with_index do |f,i|
@@ -133,9 +133,9 @@ class World
         s +=","
       end
         if f.class == Tracker
-            s += f.get_track_json
+            s += f.get_json
         elsif f.class == Waypoint
-            s += f.get_waypoint_json
+            s += f.get_json
       end
     end
     s + "]}"
