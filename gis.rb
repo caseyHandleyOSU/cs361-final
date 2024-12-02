@@ -29,7 +29,7 @@ class Tracker
       seg_points = []
       segment.each{ |point| 
         point_as_arr = [point.lon, point.lat]
-        seg_points.append(point_as_arr)
+        seg_points.append(point.to_arr)
       }
       coordinates.append(seg_points)
     }
@@ -58,6 +58,15 @@ class Point
     @lon = lon
     @lat = lat
     @ele = ele
+  end
+
+  def to_arr
+    arr = [lon, lat]
+    if ele != nil
+      arr.append(ele)
+    end
+
+    return arr
   end
 
   def to_s

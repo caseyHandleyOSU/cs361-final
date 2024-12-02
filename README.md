@@ -4,6 +4,8 @@
 - Renamed `Track` Class to `Tracker`
 - Converted `Tracker` `get_track_json()` function to use `JSON.generate` and a hash.
 - `Waypoint` use `Point` class for `lat`, `lon`, `ele`
+- Created GisJson class to abstract creation of commonly-used hashes for Json creation
+- Abstracted creation of Coordinates array into `to_arr()` function in `Point` class
 
 ## GIS Tool
 
