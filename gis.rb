@@ -19,7 +19,7 @@ class Tracker
       }
       coordinates.append(seg_points)
     }
-    
+
     json_hash = { 
       type: "Feature", 
       properties: {
@@ -56,20 +56,30 @@ class Waypoint
   attr_reader :lat, :lon, :ele, :name, :type
 
   def initialize(lon, lat, ele=nil, name=nil, type=nil)
-    @lat = lat
-    @lon = lon
-    @ele = ele
+    @point = Point.new(lon, lat, ele)
     @name = name
     @type = type
+  end
+
+  def lat
+    return @point.lat
+  end
+
+  def lon
+    return @point.lon
+  end
+
+  def ele
+    return @point.ele
   end
 
   def get_waypoint_json(indent=0)
     j = '{"type": "Feature",'
     # if name is not nil or type is not nil
     j += '"geometry": {"type": "Point","coordinates": '
-    j += "[#{@lon},#{@lat}"
+    j += "[#{lon},#{lat}"
     if ele != nil
-      j += ",#{@ele}"
+      j += ",#{ele}"
     end
     j += ']},'
     if name != nil or type != nil
