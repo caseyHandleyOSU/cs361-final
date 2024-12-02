@@ -24,6 +24,10 @@ class GisJson
     return geometry
   end
 
+  def self.gen(hash)
+    return JSON.generate(hash)
+  end
+
 end
 
 class Tracker
@@ -52,7 +56,7 @@ class Tracker
       geometry: GisJson.geometry(type: "MultiLineString", coordinates: coordinates)
     }
 
-    return JSON.generate(json_hash)
+    return GisJson.gen(json_hash)
 
   end
 
@@ -111,7 +115,7 @@ class Waypoint
       properties: GisJson.properties(title: @name, icon: @type)
     }
 
-    return JSON.generate(json_hash)
+    return GisJson.gen(json_hash)
   end
 end
 

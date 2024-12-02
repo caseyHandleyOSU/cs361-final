@@ -8,6 +8,7 @@
 - Abstracted creation of Coordinates array into `to_arr()` function in `Point` class
 - Cleaned up `get_waypoint_json()` function in `Waypoint` class
 - Created `geometry()` function in `GisJson` to abstract creation of geometry hash pre-json
+- Created `gen()` function in `GisJson` to wrap call to `JSON.generate()`
 
 ## GIS Tool
 
