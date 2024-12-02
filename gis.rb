@@ -2,6 +2,11 @@
 
 require "json"
 
+class GisJson
+
+
+end
+
 class Tracker
 
   def initialize(segments, name=nil)
