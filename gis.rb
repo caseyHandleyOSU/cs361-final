@@ -52,14 +52,6 @@ class Track
   end
 end
 
-class TrackSegment
-  attr_reader :coordinates
-
-  def initialize(coordinates)
-    @coordinates = coordinates
-  end
-end
-
 class Point
   attr_reader :lat, :lon, :ele
 
