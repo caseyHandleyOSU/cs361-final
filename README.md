@@ -9,6 +9,8 @@
 - Cleaned up `get_waypoint_json()` function in `Waypoint` class
 - Created `geometry()` function in `GisJson` to abstract creation of geometry hash pre-json
 - Created `gen()` function in `GisJson` to wrap call to `JSON.generate()`
+- Renamed `things` property in `World` initializer to `features`
+- Renamed `f` property in `World`'s `add_feature()` to `new_feature`
 
 ## GIS Tool
 
