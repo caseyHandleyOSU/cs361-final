@@ -37,7 +37,7 @@ class Tracker
     @segments = segments
   end
 
-  def get_json()
+  def get_hash()
     coordinates = []
     @segments.each{ |segment| 
       seg_points = []
@@ -55,8 +55,11 @@ class Tracker
       geometry: GisJson.geometry(type: "MultiLineString", coordinates: coordinates)
     }
 
-    return GisJson.gen(json_hash)
+    return json_hash
+  end
 
+  def get_json()
+    return GisJson.gen(get_hash())
   end
 
 end
@@ -102,15 +105,18 @@ class Waypoint
     return @point.ele
   end
 
-  def get_json(indent=0)
-
+  def get_hash()
     json_hash = {
       type: "Feature",
       geometry: GisJson.geometry(type: "Point", coordinates: @point.to_arr),
       properties: GisJson.properties(title: @name, icon: @type)
     }
 
-    return GisJson.gen(json_hash)
+    return json_hash
+  end
+
+  def get_json(indent=0)
+    return GisJson.gen(get_hash())
   end
 end
 
@@ -125,20 +131,22 @@ class World
     @features.append(new_feature)
   end
 
+  def get_hash()
+    features = []
+    @features.each {|feature| 
+      features.append(feature.get_hash)
+    }
+
+    json_hash = {
+      type: "FeatureCollection",
+      features: features
+    }
+
+    return json_hash
+  end
+
   def get_json(indent=0)
-    # Write stuff
-    s = '{"type": "FeatureCollection","features": ['
-    @features.each_with_index do |f,i|
-      if i != 0
-        s +=","
-      end
-        if f.class == Tracker
-            s += f.get_json
-        elsif f.class == Waypoint
-            s += f.get_json
-      end
-    end
-    s + "]}"
+    return GisJson.gen(get_hash())
   end
   
 end

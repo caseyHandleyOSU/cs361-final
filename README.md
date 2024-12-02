@@ -11,6 +11,9 @@
 - Created `gen()` function in `GisJson` to wrap call to `JSON.generate()`
 - Renamed `things` property in `World` initializer to `features`
 - Renamed `f` property in `World`'s `add_feature()` to `new_feature`
+- All Json getters now use the same interface (function name `get_json()`)
+- Abstracted all `get_json` functionality to `get_hash()`
+- Cleaned up `World`'s `get_json()`
 
 ## GIS Tool
 
