@@ -82,7 +82,7 @@ class Point
 end
 
 class Waypoint
-  attr_reader :lat, :lon, :ele, :name, :type
+  attr_reader :name, :type
 
   def initialize(lon, lat, ele=nil, name=nil, type=nil)
     @point = Point.new(lon, lat, ele)
