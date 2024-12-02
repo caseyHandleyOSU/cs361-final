@@ -1,5 +1,7 @@
 ## Changes
 - Fixed initial whitespace
+- Removed TrackSegment Class
+- Renamed `Track` Class to `Tracker`
 
 ## GIS Tool
 

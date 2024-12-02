@@ -2,7 +2,7 @@
 
 require "json"
 
-class Track
+class Tracker
 
   def initialize(segments, name=nil)
     @name = name
