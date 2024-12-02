@@ -1,3 +1,6 @@
+## Changes
+- Fixed initial whitespace
+
 ## GIS Tool
 
 Geographic Information Systems program.
