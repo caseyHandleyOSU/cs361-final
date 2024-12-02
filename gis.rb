@@ -50,9 +50,7 @@ class Tracker
 
     json_hash = { 
       type: "Feature", 
-      properties: {
-        title: "#{@name}"
-      },
+      properties: GisJson.properties(title: @name),
       geometry: GisJson.geometry(type: "MultiLineString", coordinates: coordinates)
     }
 
