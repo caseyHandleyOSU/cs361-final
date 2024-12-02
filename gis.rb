@@ -14,6 +14,16 @@ class GisJson
     return properties
   end
 
+  def self.geometry(type: nil, coordinates: [])
+    geometry = {
+      type: type,
+      coordinates: coordinates
+    }
+    geometry.compact!
+
+    return geometry
+  end
+
 end
 
 class Tracker
@@ -39,10 +49,7 @@ class Tracker
       properties: {
         title: "#{@name}"
       },
-      geometry: {
-        type: "MultiLineString",
-        coordinates: coordinates
-      }
+      geometry: GisJson.geometry(type: "MultiLineString", coordinates: coordinates)
     }
 
     return JSON.generate(json_hash)
@@ -100,15 +107,9 @@ class Waypoint
 
     json_hash = {
       type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: @point.to_arr,
-      },
+      geometry: GisJson.geometry(type: "Point", coordinates: @point.to_arr),
       properties: GisJson.properties(title: @name, icon: @type)
     }
-
-    # Remove nil entries of title and icon
-    json_hash[:properties].compact!
 
     return JSON.generate(json_hash)
   end

@@ -7,6 +7,7 @@
 - Created GisJson class to abstract creation of commonly-used hashes for Json creation
 - Abstracted creation of Coordinates array into `to_arr()` function in `Point` class
 - Cleaned up `get_waypoint_json()` function in `Waypoint` class
+- Created `geometry()` function in `GisJson` to abstract creation of geometry hash pre-json
 
 ## GIS Tool
 
