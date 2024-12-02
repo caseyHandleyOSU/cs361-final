@@ -6,6 +6,7 @@
 - `Waypoint` use `Point` class for `lat`, `lon`, `ele`
 - Created GisJson class to abstract creation of commonly-used hashes for Json creation
 - Abstracted creation of Coordinates array into `to_arr()` function in `Point` class
+- Cleaned up `get_waypoint_json()` function in `Waypoint` class
 
 ## GIS Tool
 
