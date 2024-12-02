@@ -2,6 +2,8 @@
 - Fixed initial whitespace
 - Removed TrackSegment Class
 - Renamed `Track` Class to `Tracker`
+- Converted `Tracker` `get_track_json()` function to use `JSON.generate` and a hash.
+- 
 
 ## GIS Tool
 

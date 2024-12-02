@@ -6,50 +6,35 @@ class Tracker
 
   def initialize(segments, name=nil)
     @name = name
-    segment_objects = []
-    segments.each do |s|
-      segment_objects.append(TrackSegment.new(s))
-    end
-    # set segments to segment_objects
-    @segments = segment_objects
+    @segments = segments
   end
 
   def get_track_json()
-    j = '{'
-    j += '"type": "Feature", '
-    if @name != nil
-      j+= '"properties": {'
-      j += '"title": "' + @name + '"'
-      j += '},'
-    end
-    j += '"geometry": {'
-    j += '"type": "MultiLineString",'
-    j +='"coordinates": ['
-    # Loop through all the segment objects
-    @segments.each_with_index do |s, index|
-      if index > 0
-        j += ","
-      end
-      j += '['
-      # Loop through all the coordinates in the segment
-      tsj = ''
-      s.coordinates.each do |c|
-        if tsj != ''
-          tsj += ','
-        end
-        # Add the coordinate
-        tsj += '['
-        tsj += "#{c.lon},#{c.lat}"
-        if c.ele != nil
-          tsj += ",#{c.ele}"
-        end
-        tsj += ']'
-      end
-      j+=tsj
-      j+=']'
-    end
-    j + ']}}'
+    coordinates = []
+    @segments.each{ |segment| 
+      seg_points = []
+      segment.each{ |point| 
+        point_as_arr = [point.lon, point.lat]
+        seg_points.append(point_as_arr)
+      }
+      coordinates.append(seg_points)
+    }
+    
+    json_hash = { 
+      type: "Feature", 
+      properties: {
+        title: "#{@name}"
+      },
+      geometry: {
+        type: "MultiLineString",
+        coordinates: coordinates
+      }
+    }
+
+    return JSON.generate(json_hash)
+
   end
+
 end
 
 class Point
@@ -60,6 +45,11 @@ class Point
     @lat = lat
     @ele = ele
   end
+
+  def to_s
+    return "#{@lat},#{@lon}#{@ele != nil ? ",#{@ele}" : ""}"
+  end
+
 end
 
 class Waypoint
@@ -118,7 +108,7 @@ class World
       if i != 0
         s +=","
       end
-        if f.class == Track
+        if f.class == Tracker
             s += f.get_track_json
         elsif f.class == Waypoint
             s += f.get_waypoint_json
@@ -146,8 +136,8 @@ def main()
     Point.new(-122, 45.5),
   ]
 
-  t = Track.new([ts1, ts2], "track 1")
-  t2 = Track.new([ts3], "track 2")
+  t = Tracker.new([ts1, ts2], "track 1")
+  t2 = Tracker.new([ts3], "track 2")
 
   world = World.new("My Data", [w, w2, t, t2])
 
