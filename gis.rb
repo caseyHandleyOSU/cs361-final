@@ -4,56 +4,6 @@ require "json"
 require_relative "locations"
 require_relative "dataObjects"
 
-class GisJson
-
-  def self.properties(title: nil, icon: nil)
-    properties = {
-      title: title,
-      icon: icon
-    }
-    properties.compact!
-
-    return properties
-  end
-
-  def self.geometry(type: nil, coordinates: [])
-    geometry = {
-      type: type,
-      coordinates: coordinates
-    }
-    geometry.compact!
-
-    return geometry
-  end
-
-  def self.gen(hash)
-    return JSON.generate(hash)
-  end
-
-end
-
-class GisJsonObj
-
-  def initialize(type: nil, properties: nil, geometry: nil, features: nil)
-    @hash = {
-      type: type,
-      properties: properties,
-      geometry: geometry,
-      features: features
-    }
-    @hash.compact!
-  end
-
-  def get_hash()
-    return @hash
-  end
-
-  def to_json()
-    return JSON.generate(@hash)
-  end
-
-end
-
 class Track
 
   TYPE = "Feature"
