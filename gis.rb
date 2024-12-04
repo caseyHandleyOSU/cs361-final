@@ -14,7 +14,7 @@ class Track
     @segments = segments
   end
 
-  def get_hash()
+  def create_json_obj()
     coordinates = []
     @segments.each{ |segment| 
       seg_points = []
@@ -30,11 +30,16 @@ class Track
       properties: GisJson.properties(title: @name),
       geometry: GisJson.geometry(type: GEO_TYPE, coordinates: coordinates)
     )
-    return data.get_hash()
+
+    return data
+  end
+
+  def get_hash()
+    return create_json_obj().get_hash()
   end
 
   def get_json()
-    return GisJson.gen(get_hash())
+    return create_json_obj().to_json()
   end
 
 end
@@ -52,7 +57,7 @@ class World
     @features.append(new_feature)
   end
 
-  def get_hash()
+  def create_json_obj()
     features = []
     @features.each {|feature| 
       features.append(feature.get_hash)
@@ -62,12 +67,16 @@ class World
       type: TYPE,
       features: features
     )
+    
+    return data
+  end
 
-    return data.get_hash()
+  def get_hash()
+    return create_json_obj().get_hash()
   end
 
   def get_json(indent=0)
-    return GisJson.gen(get_hash())
+    return create_json_obj().to_json()
   end
   
 end
