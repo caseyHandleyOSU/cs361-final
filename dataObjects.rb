@@ -33,8 +33,8 @@ class Geometry < ChildData
 
   def initialize(type: nil, coordinates: [])
     @data = {
-      type: @type,
-      coordinates: @coordinates
+      type: type,
+      coordinates: coordinates
     }
   end
 
