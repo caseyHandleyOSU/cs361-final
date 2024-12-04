@@ -3,46 +3,7 @@
 require "json"
 require_relative "locations"
 require_relative "dataObjects"
-
-class Track
-
-  TYPE = "Feature"
-  GEO_TYPE = "MultiLineString"
-
-  def initialize(segments, name=nil)
-    @name = name
-    @segments = segments
-  end
-
-  def create_json_obj()
-    coordinates = []
-    @segments.each{ |segment| 
-      seg_points = []
-      segment.each{ |point| 
-        point_as_arr = [point.lon, point.lat]
-        seg_points.append(point.to_arr)
-      }
-      coordinates.append(seg_points)
-    }
-
-    data = GisJsonObj.new(
-      type: TYPE,
-      properties: Properties.new(title: @name).to_hash(),
-      geometry: Geometry.new(type: GEO_TYPE, coordinates: coordinates).to_hash()
-    )
-
-    return data
-  end
-
-  def get_hash()
-    return create_json_obj().get_hash()
-  end
-
-  def get_json()
-    return create_json_obj().to_json()
-  end
-
-end
+require_relative "features"
 
 class World
 
