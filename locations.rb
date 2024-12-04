@@ -45,8 +45,8 @@ class Waypoint
   def get_hash()
     data = GisJsonObj.new(
       type: TYPE,
-      properties: GisJson.properties(title: @name, icon: @type),
-      geometry: GisJson.geometry(type: GEO_TYPE, coordinates: @point.to_arr)
+      properties: Properties.new(title: @name, icon: @type).to_hash(),
+      geometry: Geometry.new(type: GEO_TYPE, coordinates: @point.to_arr).to_hash()
     )
     return data.get_hash()
   end
@@ -54,4 +54,5 @@ class Waypoint
   def get_json(indent=0)
     return GisJson.gen(get_hash())
   end
+  
 end

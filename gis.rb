@@ -27,8 +27,8 @@ class Track
 
     data = GisJsonObj.new(
       type: TYPE,
-      properties: GisJson.properties(title: @name),
-      geometry: GisJson.geometry(type: GEO_TYPE, coordinates: coordinates)
+      properties: Properties.new(title: @name).to_hash(),
+      geometry: Geometry.new(type: GEO_TYPE, coordinates: coordinates).to_hash()
     )
 
     return data
