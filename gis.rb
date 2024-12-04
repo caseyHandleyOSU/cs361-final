@@ -32,10 +32,6 @@ class World
     return data
   end
 
-  def get_hash()
-    return create_json_obj().get_hash()
-  end
-
   def get_json(indent=0)
     return create_json_obj().to_json()
   end
