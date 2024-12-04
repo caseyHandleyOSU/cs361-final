@@ -48,3 +48,33 @@ class Track < Feature
   end
 
 end
+
+class Waypoint < Feature
+  attr_reader :name, :type
+
+  GEO_TYPE = "Point"
+
+  def initialize(lon, lat, ele=nil, name=nil, type=nil)
+    @point = Point.new(lon, lat, ele) # Dependency... should this be passed in instead?
+    @name = name
+    @type = type
+  end
+
+  def lat
+    return @point.lat
+  end
+
+  def lon
+    return @point.lon
+  end
+
+  def ele
+    return @point.ele
+  end
+
+  def create_json_obj()
+    @coordinates = @point.to_arr
+    return super
+  end
+
+end
