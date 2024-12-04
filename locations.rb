@@ -42,17 +42,22 @@ class Waypoint
     return @point.ele
   end
 
-  def get_hash()
+  def create_json_obj()
     data = GisJsonObj.new(
       type: TYPE,
       properties: Properties.new(title: @name, icon: @type).to_hash(),
       geometry: Geometry.new(type: GEO_TYPE, coordinates: @point.to_arr).to_hash()
     )
-    return data.get_hash()
+
+    return data
+  end
+
+  def get_hash()
+    return create_json_obj().get_hash()
   end
 
   def get_json(indent=0)
-    return GisJson.gen(get_hash())
+    return create_json_obj().to_json()
   end
-  
+
 end
