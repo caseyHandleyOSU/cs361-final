@@ -10,7 +10,7 @@ class GisJsonObj
     @hash.compact!
   end
 
-  def get_hash()
+  def to_hash()
     return @hash
   end
 
