@@ -21,7 +21,6 @@
 - Removed `GisJson` class
 - Created `create_json_obj()` functions to package `Track` and `World` class data into a `GisJsonObj`
 - Use `create_json_obj()` for `get_hash()` and `to_json()` functions in `Track` and `World` classes
-- 
 
 ## GIS Tool
 
