@@ -2,6 +2,7 @@
 
 require "json"
 require_relative "locations"
+require_relative "dataObjects"
 
 class GisJson
 

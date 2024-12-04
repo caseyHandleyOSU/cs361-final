@@ -15,6 +15,7 @@
 - Cleaned up `World`'s `get_json()`
 - Created `GisJsonObj` class to abstract creation of json hashes
 - Moved `Point` and `Waypoint` classes to `locations.rb` to improve readability
+- Moved `GisJsonObj` class to `dataObjects.rb` to improve readability
 
 ## GIS Tool
 
