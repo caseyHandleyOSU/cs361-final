@@ -16,6 +16,12 @@
 - Created `GisJsonObj` class to abstract creation of json hashes
 - Moved `Point` and `Waypoint` classes to `locations.rb` to improve readability
 - Moved `GisJsonObj` class to `dataObjects.rb` to improve readability
+- Created abstract data class `ChildData`
+- Created data classes `Properties` and `Geometry`
+- Removed `GisJson` class
+- Created `create_json_obj()` functions to package `Track` and `World` class data into a `GisJsonObj`
+- Use `create_json_obj()` for `get_hash()` and `to_json()` functions in `Track` and `World` classes
+- 
 
 ## GIS Tool
 
