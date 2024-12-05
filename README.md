@@ -1,4 +1,9 @@
 ## Changes
+
+## Summary
+- 
+
+### All Changes
 - Fixed initial whitespace
 - Removed TrackSegment Class
 - Converted `Tracker` `get_track_json()` function to use `JSON.generate` and a hash.
@@ -24,6 +29,7 @@
 - Created abstracted `Feature` class in `feature.rb` to reduce redundancy creating Features
 - Moved `Track` class into `feature.rb`; made a subclass of `Feature`
 - Moved `Waypoint` class into `feature.rb`; made a subclass of `Feature`
+- Created `PointSegment` class; named `PointSegment` instead of `TrackSegment` for potential future extensibility
 
 ## GIS Tool
 
