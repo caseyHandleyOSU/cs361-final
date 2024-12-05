@@ -1,7 +1,14 @@
 ## Changes
 
 ## Summary
-- 
+- Reformatted whitespacing
+- Converted manual JSON building to utilize ruby's JSON library via hashes
+- Fixed DRY violation in `Waypoint` class by utilizing a `Point`
+- Created `Geometry` and `Properties` classes to wrap creation of these JSON fields
+- Improved variable names in `World` class (Now called `FeatureCollection`)
+- Moved classes to files based on class-goals to increase readability
+- Implemented a consistent interface for similar functions across classes; abstracted where possible
+- Utilized object pass-through to avoid unneccessary dependencies
 
 ### All Changes
 - Fixed initial whitespace
