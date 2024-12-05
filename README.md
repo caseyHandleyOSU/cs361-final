@@ -5,7 +5,7 @@
 
 ### All Changes
 - Fixed initial whitespace
-- Removed TrackSegment Class
+- Removed `TrackSegment` Class
 - Converted `Tracker` `get_track_json()` function to use `JSON.generate` and a hash.
 - `Waypoint` use `Point` class for `lat`, `lon`, `ele`
 - Created GisJson class to abstract creation of commonly-used hashes for Json creation
@@ -30,6 +30,8 @@
 - Moved `Track` class into `feature.rb`; made a subclass of `Feature`
 - Moved `Waypoint` class into `feature.rb`; made a subclass of `Feature`
 - Created `PointSegment` class; named `PointSegment` instead of `TrackSegment` for potential future extensibility
+- Changed `Waypoint` class to take a `Point` object as an argument instead of `lon`, `lat`, and `ele` arguments
+- Changed `Waypoint` initializer to utilize keyword parameters
 
 ## GIS Tool
 

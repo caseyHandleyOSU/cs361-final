@@ -5,17 +5,17 @@ require 'test/unit'
 class TestGis < Test::Unit::TestCase
 
   def test_waypoints
-    w = Waypoint.new(-121.5, 45.5, 30, "home", "flag")
+    w = Waypoint.new(point: Point.new(-121.5, 45.5, 30), name: "home", type: "flag")
     expected = JSON.parse('{"type": "Feature","properties": {"title": "home","icon": "flag"},"geometry": {"type": "Point","coordinates": [-121.5,45.5,30]}}')
     result = JSON.parse(w.get_json)
     assert_equal(result, expected)
 
-    w = Waypoint.new(-121.5, 45.5, nil, nil, "flag")
+    w = Waypoint.new(point: Point.new(-121.5, 45.5), type: "flag")
     expected = JSON.parse('{"type": "Feature","properties": {"icon": "flag"},"geometry": {"type": "Point","coordinates": [-121.5,45.5]}}')
     result = JSON.parse(w.get_json)
     assert_equal(result, expected)
 
-    w = Waypoint.new(-121.5, 45.5, nil, "store", nil)
+    w = Waypoint.new(point: Point.new(-121.5, 45.5), name: "store")
     expected = JSON.parse('{"type": "Feature","properties": {"title": "store"},"geometry": {"type": "Point","coordinates": [-121.5,45.5]}}')
     result = JSON.parse(w.get_json)
     assert_equal(result, expected)
@@ -40,8 +40,8 @@ class TestGis < Test::Unit::TestCase
   end
 
   def test_world
-    w = Waypoint.new(-121.5, 45.5, 30, "home", "flag")
-    w2 = Waypoint.new(-121.5, 45.6, nil, "store", "dot")
+    w = Waypoint.new(point: Point.new(-121.5, 45.5, 30), name: "home", type: "flag")
+    w2 = Waypoint.new(point: Point.new(-121.5, 45.6), name: "store", type: "dot")
 
     ts1 = PointSegment.new(points: [Point.new(-122, 45), Point.new(-122, 46), Point.new(-121, 46)])
     ts2 = PointSegment.new(points: [Point.new(-121, 45), Point.new(-121, 46)])

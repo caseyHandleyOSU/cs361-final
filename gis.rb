@@ -40,8 +40,8 @@ end
 
 def main()
 
-  w = Waypoint.new(-121.5, 45.5, 30, "home", "flag")
-  w2 = Waypoint.new(-121.5, 45.6, nil, "store", "dot")
+  w = Waypoint.new(point: Point.new(-121.5, 45.5, 30), name: "home", type: "flag")
+  w2 = Waypoint.new(point: Point.new(-121.5, 45.6), name: "store", type: "dot")
 
   ts1 = [ Point.new(-122, 45), Point.new(-122, 46), Point.new(-121, 46), ]
   ts2 = [ Point.new(-121, 45), Point.new(-121, 46), ]

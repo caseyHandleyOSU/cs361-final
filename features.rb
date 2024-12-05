@@ -45,8 +45,8 @@ class Waypoint < Feature
 
   GEO_TYPE = "Point"
 
-  def initialize(lon, lat, ele=nil, name=nil, type=nil)
-    @point = Point.new(lon, lat, ele) # Dependency... should this be passed in instead?
+  def initialize(point:, name: nil, type: nil)
+    @point = point
     @name = name
     @type = type
   end
