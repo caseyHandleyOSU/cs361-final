@@ -32,6 +32,7 @@
 - Created `PointSegment` class; named `PointSegment` instead of `TrackSegment` for potential future extensibility
 - Changed `Waypoint` class to take a `Point` object as an argument instead of `lon`, `lat`, and `ele` arguments
 - Changed `Waypoint` initializer to utilize keyword parameters
+- Renamed `World` class to `FeatureCollection`
 
 ## GIS Tool
 

@@ -5,7 +5,7 @@ require_relative "locations"
 require_relative "dataObjects"
 require_relative "features"
 
-class World
+class FeatureCollection
 
   TYPE = "FeatureCollection"
 
@@ -50,7 +50,7 @@ def main()
   t = Track.new([ts1, ts2], "track 1")
   t2 = Track.new([ts3], "track 2")
 
-  world = World.new("My Data", [w, w2, t, t2])
+  world = FeatureCollection.new("My Data", [w, w2, t, t2])
 
   puts world.to_geojson()
 
