@@ -1,6 +1,6 @@
 ## Changes
 
-## Summary
+### Summary
 - Reformatted whitespace
 - Converted manual JSON building to utilize ruby's JSON library via hashes
 - Fixed DRY violation in `Waypoint` class by utilizing a `Point`
