@@ -40,6 +40,7 @@
 - Changed `Waypoint` class to take a `Point` object as an argument instead of `lon`, `lat`, and `ele` arguments
 - Changed `Waypoint` initializer to utilize keyword parameters
 - Renamed `World` class to `FeatureCollection`
+- Ensured all `hash` and `json` methods use the same interface
 
 ## GIS Tool
 

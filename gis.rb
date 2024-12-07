@@ -17,10 +17,10 @@ class FeatureCollection
     @features.append(new_feature)
   end
 
-  def get_hash()
+  def get_features_as_hashes()
     features = []
     @features.each {|feature| 
-      features.append(feature.get_hash)
+      features.append(feature.to_hash)
     }
     return features
   end
@@ -28,13 +28,17 @@ class FeatureCollection
   def create_json_obj()
     data = GisJsonObj.new(
       type: TYPE,
-      features: get_hash()
+      features: get_features_as_hashes()
     )
     
     return data
   end
 
-  def get_json(indent=0)
+  def to_hash()
+    return create_json_obj().to_hash()
+  end
+
+  def to_json(indent=0)
     return create_json_obj().to_json()
   end
   
