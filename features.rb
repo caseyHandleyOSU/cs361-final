@@ -32,9 +32,13 @@ class Track < Feature
     @segments = segments
   end
 
-  def create_json_obj()
+  def segments_to_coordinates()
     @coordinates = []
     @segments.each{ |segment| @coordinates.append(segment.to_arr()) }
+  end
+
+  def create_json_obj()
+    segments_to_coordinates()
     return super
   end
 
