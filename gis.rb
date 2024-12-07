@@ -6,7 +6,6 @@ require_relative "dataObjects"
 require_relative "features"
 
 class FeatureCollection
-
   TYPE = "FeatureCollection"
 
   def initialize(name, features)
@@ -18,15 +17,18 @@ class FeatureCollection
     @features.append(new_feature)
   end
 
-  def create_json_obj()
+  def get_hash()
     features = []
     @features.each {|feature| 
       features.append(feature.get_hash)
     }
+    return features
+  end
 
+  def create_json_obj()
     data = GisJsonObj.new(
       type: TYPE,
-      features: features
+      features: get_hash()
     )
     
     return data
