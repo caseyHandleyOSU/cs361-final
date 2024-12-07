@@ -8,7 +8,9 @@
 - Improved variable names in `World` class (Now called `FeatureCollection`)
 - Moved classes to files based on class-goals to increase readability
 - Implemented a consistent interface for similar functions across classes; abstracted where possible
-- Utilized object pass-through to avoid unneccessary dependencies
+- Utilized object dependency injection to avoid unneccessary dependencies, wherever possible
+- Utilized keyword arguments to reduce risk of change for some classes
+- Renamed classes to clarify purpose
 
 ### All Changes
 - Fixed initial whitespace
